@@ -1,21 +1,103 @@
 // СОБЫТИЯ УПРАВЛЕНИЯ СЛАЙДЕРОМ
-var offset = 0;	// смещение от левого края
-const sliderLine = document.querySelector('.slider_line');
+//var offset = 0;	// смещение от левого края
+//const sliderLine = document.querySelector('.slider_line');
 
-document.querySelector('.slider_btn_next').addEventListener('click', function(){
-	offset = offset + 920;	// offset += 920;
-	if (offset > 1840) {
-		offset = 0;
+//document.querySelector('.slider_btn_next').addEventListener('click', function(){
+//	offset = offset + 920;	// offset += 920;
+//	if (offset > 1840) {
+//		offset = 0;
+//	}
+//	sliderLine.style.left = -offset + 'px';
+//});
+//document.querySelector('.slider_btn_previous').addEventListener('click', function () {
+//	offset = offset - 920;	// offset -= 920;
+//	if (offset < 0) {
+//		offset = 1840;
+//	}
+//	sliderLine.style.left = -offset + 'px';
+//});
+
+// СОБЫТИЯ АДАПТИВНОГО СЛАЙДЕРА
+const sliderContents = document.querySelectorAll('.slider_content');
+const sliderLine = document.querySelector('.slider_line');
+const btnPrev = document.querySelector('.slider_btn_previous');
+const btnNext = document.querySelector('.slider_btn_next');
+var count = 0;
+var sliderWidth;
+
+function init() {
+	sliderWidth = document.querySelector('.transports_block_slider').offsetWidth;
+	sliderLine.style.width = sliderWidth * sliderContents.length + 'px';
+	sliderContents.forEach(item => {
+		item.style.width = sliderWidth + 'px';
+		item.style.height = 'auto';
+	});
+		rollSlider();
+}
+window.addEventListener('resize', init);
+init();
+
+btnPrev.addEventListener('click', function () {
+	count--;
+	if (count < 0) {
+		count = sliderContents.length - 1;
 	}
-	sliderLine.style.left = -offset + 'px';
+	rollSlider();
 });
-document.querySelector('.slider_btn_previous').addEventListener('click', function () {
-	offset = offset - 920;	// offset -= 920;
-	if (offset < 0) {
-		offset = 1840;
+btnNext.addEventListener('click', function () {
+	count++;
+	if (count >= sliderContents.length) {
+		count = 0;
 	}
-	sliderLine.style.left = -offset + 'px';
+	rollSlider();
 });
+function rollSlider() {
+	sliderLine.style.transform = 'translate(-' + count * sliderWidth + 'px)';
+}
+
+// var x1 = null;
+// var y1 = null;
+// sliderLine.addEventListener('touchstart', handleTouchStart);
+// sliderLine.addEventListener('touchmove', handleTouchMove);
+// function handleTouchStart(e) {
+// 	const firstTouch = e.touches[0];
+// 	x1 = firstTouch.clientX;
+// 	y1 = firstTouch.clientY;
+// 	console.log(x1);
+// 	console.log(y1);
+// }
+// function handleTouchMove(e) {
+// 	if (!x1 || !y1) {
+// 		return false;
+// 	}
+	
+// 	var x2 = e.touches.clientX;
+// 	var y2 = e.touches.clientY;
+// 	var xDiff = x2 - x1;
+// 	var yDiff = y2 - y1;
+
+// 	console.log(x2);
+// 	console.log(y2);
+
+// 	if (Math.abs(xDiff) > Math.abs(yDiff)) {
+// 		// право-лево
+// 		if (xDiff > 0) {
+// 			console.log('right');	
+// 		} else {
+// 			console.log('left');	
+// 		}
+// 	} else {
+// 		// вверх-вниз
+// 		if (yDiff > 0) {
+// 			console.log('top');	
+// 		} else {
+// 			console.log('bottom');	
+// 		}
+// 	}
+// 	x1 = null;
+// 	y1 = null;
+// }
+
 
 
 
