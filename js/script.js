@@ -55,50 +55,6 @@ function rollSlider() {
 	sliderLine.style.transform = 'translate(-' + count * sliderWidth + 'px)';
 }
 
-// var x1 = null;
-// var y1 = null;
-// sliderLine.addEventListener('touchstart', handleTouchStart);
-// sliderLine.addEventListener('touchmove', handleTouchMove);
-// function handleTouchStart(e) {
-// 	const firstTouch = e.touches[0];
-// 	x1 = firstTouch.clientX;
-// 	y1 = firstTouch.clientY;
-// 	console.log(x1);
-// 	console.log(y1);
-// }
-// function handleTouchMove(e) {
-// 	if (!x1 || !y1) {
-// 		return false;
-// 	}
-	
-// 	var x2 = e.touches.clientX;
-// 	var y2 = e.touches.clientY;
-// 	var xDiff = x2 - x1;
-// 	var yDiff = y2 - y1;
-
-// 	console.log(x2);
-// 	console.log(y2);
-
-// 	if (Math.abs(xDiff) > Math.abs(yDiff)) {
-// 		// право-лево
-// 		if (xDiff > 0) {
-// 			console.log('right');	
-// 		} else {
-// 			console.log('left');	
-// 		}
-// 	} else {
-// 		// вверх-вниз
-// 		if (yDiff > 0) {
-// 			console.log('top');	
-// 		} else {
-// 			console.log('bottom');	
-// 		}
-// 	}
-// 	x1 = null;
-// 	y1 = null;
-// }
-
-
 
 
 // СОБЫТИЯ ВЫБОРА УСЛУГИ
